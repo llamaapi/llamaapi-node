@@ -1,0 +1,19 @@
+{
+  "name": "llamaapi-node",
+  "version": "1.0.0",
+  "description": "node package for llama api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/llamaapi/llamaapi-node.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llamaapi/llamaapi-node/issues"
+  },
+  "homepage": "https://github.com/llamaapi/llamaapi-node#readme"
+}
