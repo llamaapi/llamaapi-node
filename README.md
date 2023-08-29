@@ -1,45 +1,46 @@
-# llamaapi-node
+# LlamaAPI Node.js Library
 
-## Usage
+## How to Use
 
-To use the LlamaAPI library, follow these steps:
+Follow these steps to use the LlamaAPI library:
 
-1. Install the library using npm:
+1. Install the library via npm:
 
    ```bash
    npm install llamaapi-node
    ```
 
-2. Import the library into your project:
+2. Bring the library into your project:
 
    ```javascript
-   const LlamaAPI = require('llamaapi-node');
+   import LlamaAPI from 'llamaapi-node';
    ```
 
-3. Create an instance of the LlamaAPI class, passing in your API token:
+3. Instantiate the LlamaAPI class, providing your API token:
 
    ```javascript
-   const apiToken = 'YOUR_API_TOKEN';
+   const apiToken = 'INSERT_YOUR_API_TOKEN_HERE';
    const llamaAPI = new LlamaAPI(apiToken);
    ```
 
-4. Make API requests using the `run` method:
+4. Execute API requests using the `run` method:
 
    ```javascript
    const apiRequestJson = {
-     // Your API request payload
+     // Insert your API request payload here
    };
 
    llamaAPI.run(apiRequestJson)
      .then(response => {
-       // Handle the API response
+       // Process the API response here
      })
      .catch(error => {
-       // Handle errors
+       // Handle any errors here
      });
    ```
 
-That's it! You can now use the LlamaAPI library in your project to interact with the Llama API.
+And that's all! You can now utilize the LlamaAPI library in your project to communicate with the Llama API.
 
-For more information, refer to the [API documentation](https://docs.llama-api.com).
+For additional details, please refer to the [API documentation](https://docs.llama-api.com).
+
 
