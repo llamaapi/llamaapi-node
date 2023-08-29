@@ -1,4 +1,4 @@
-import LlamaAPI from "./index.js";
+import LlamaAPI from "llamaapi-node";
 const apiToken = 'YOUR_API_TOKEN';
 const llamaAPI = new LlamaAPI(apiToken);
 const payload = {
