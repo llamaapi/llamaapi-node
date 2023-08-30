@@ -1,4 +1,5 @@
-const axios = require('axios');
+import axios from "axios";
+
 
 class LlamaAPI {
   constructor(apiToken, hostname = 'https://api.llama-api.com', domainPath = '/chat/completions') {
@@ -6,55 +7,45 @@ class LlamaAPI {
     this.domainPath = domainPath;
     this.apiToken = apiToken;
     this.headers = { Authorization: `Bearer ${this.apiToken}` };
-
     this.queue = [];
   }
 
-  async _runStreamForJupyter(apiRequestJson) {
+  async makeRequest(apiRequestJson) {
     try {
-      const response = await axios.post(`${this.hostname}${this.domainPath}`, apiRequestJson, { headers: this.headers });
-
-      for (const chunk of response.data) {
-        this.queue.push(chunk);
-      }
+      return await axios.post(`${this.hostname}${this.domainPath}`, apiRequestJson, { headers: this.headers });
     } catch (error) {
-      console.error('Error while streaming:', error);
+      throw new Error(`Error while making request: ${error.message}`);
+    }
+  }
+
+  async _runStreamForJupyter(apiRequestJson) {
+    const response = await this.makeRequest(apiRequestJson);
+
+    for (const chunk of response.data) {
+      this.queue.push(chunk);
     }
   }
 
   async *getSequences() {
-    while (true) {
-      const sequence = this.queue.shift();
-
-      if (sequence === undefined) {
-        await new Promise(resolve => setTimeout(resolve, 100)); // Wait and check again
-        continue;
-      }
-
-      // Do something with the sequence
-      yield sequence;
-
-      // You can add a condition here to break the loop when needed
+    while (this.queue.length > 0) {
+      yield this.queue.shift();
+      await new Promise(resolve => setTimeout(resolve, 100));
     }
   }
 
   async runStream(apiRequestJson) {
     await this._runStreamForJupyter(apiRequestJson);
-    yield* this.getSequences();
+    this.getSequences();
   }
 
   async runSync(apiRequestJson) {
-    try {
-      const response = await axios.post(`${this.hostname}${this.domainPath}`, apiRequestJson, { headers: this.headers });
+    const response = await this.makeRequest(apiRequestJson);
 
-      if (response.status !== 200) {
-        throw new Error(`POST ${response.status} ${response.data.detail}`);
-      }
-
-      return response.data;
-    } catch (error) {
-      throw new Error(`Error while making synchronous request: ${error.message}`);
+    if (response.status !== 200) {
+      throw new Error(`POST ${response.status} ${response.data.detail}`);
     }
+
+    return response.data;
   }
 
   run(apiRequestJson) {
@@ -66,4 +57,4 @@ class LlamaAPI {
   }
 }
 
-module.exports = LlamaAPI;
+export default LlamaAPI
