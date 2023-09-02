@@ -53,17 +53,19 @@ Follow these steps to use the LlamaAPI library:
       ],
       "stream": false,
       "function_call": "get_current_weather",
-  };
-
-
-   llamaAPI.run(apiRequestJson)
-     .then(response => {
-       // Process the API response here
-     })
-     .catch(error => {
-       // Handle any errors here
-     });
+     };
+   
+   
+      llamaAPI.run(apiRequestJson)
+        .then(response => {
+          // Process the API response here
+        })
+        .catch(error => {
+          // Handle any errors here
+        });
    ```
+
+
 
 And that's all! You can now utilize the LlamaAPI library in your project to communicate with the Llama API.
 
