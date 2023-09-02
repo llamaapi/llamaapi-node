@@ -1,6 +1,6 @@
 {
   "name": "llamaai",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "node package for llama api",
   "main": "index.js",
   "type": "module",
