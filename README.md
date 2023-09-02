@@ -13,22 +13,48 @@ Follow these steps to use the LlamaAPI library:
 2. Bring the library into your project:
 
    ```javascript
-   import LlamaAPI from 'llamaai';
+   import LlamaAI from 'llamaai';
    ```
 
 3. Instantiate the LlamaAPI class, providing your API token:
 
    ```javascript
    const apiToken = 'INSERT_YOUR_API_TOKEN_HERE';
-   const llamaAPI = new LlamaAPI(apiToken);
+   const llamaAPI = new LlamaAI(apiToken);
    ```
 
 4. Execute API requests using the `run` method:
 
    ```javascript
    const apiRequestJson = {
-     // Insert your API request payload here
-   };
+      "messages": [
+          {"role": "user", "content": "What is the weather like in Boston?"},
+      ],
+      "functions": [
+          {
+              "name": "get_current_weather",
+              "description": "Get the current weather in a given location",
+              "parameters": {
+                  "type": "object",
+                  "properties": {
+                      "location": {
+                          "type": "string",
+                          "description": "The city and state, e.g. San Francisco, CA",
+                      },
+                      "days": {
+                          "type": "number",
+                          "description": "for how many days ahead you wants the forecast",
+                      },
+                      "unit": {"type": "string", "enum": ["celsius", "fahrenheit"]},
+                  },
+              },
+              "required": ["location", "days"],
+          }
+      ],
+      "stream": false,
+      "function_call": "get_current_weather",
+  };
+
 
    llamaAPI.run(apiRequestJson)
      .then(response => {
