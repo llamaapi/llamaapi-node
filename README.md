@@ -13,14 +13,14 @@ Follow these steps to use the LlamaAPI library:
 2. Bring the library into your project:
 
    ```javascript
-   import LlamaAPI from 'llamaai';
+   import LlamaAI from 'llamaai';
    ```
 
 3. Instantiate the LlamaAPI class, providing your API token:
 
    ```javascript
    const apiToken = 'INSERT_YOUR_API_TOKEN_HERE';
-   const llamaAPI = new LlamaAPI(apiToken);
+   const llamaAPI = new LlamaAI(apiToken);
    ```
 
 4. Execute API requests using the `run` method:
