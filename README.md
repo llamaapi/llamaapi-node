@@ -7,13 +7,13 @@ Follow these steps to use the LlamaAPI library:
 1. Install the library via npm:
 
    ```bash
-   npm install llamaapi-node
+   npm install llamaai
    ```
 
 2. Bring the library into your project:
 
    ```javascript
-   import LlamaAPI from 'llamaapi-node';
+   import LlamaAPI from 'llamaai';
    ```
 
 3. Instantiate the LlamaAPI class, providing your API token:

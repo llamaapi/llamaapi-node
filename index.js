@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-class LlamaAPI {
+class LlamaAI {
   constructor(apiToken, hostname = 'https://api.llama-api.com', domainPath = '/chat/completions') {
     this.hostname = hostname;
     this.domainPath = domainPath;
@@ -57,4 +57,4 @@ class LlamaAPI {
   }
 }
 
-export default LlamaAPI
+export default LlamaAI
