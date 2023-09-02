@@ -1,5 +1,5 @@
 {
-  "name": "llamaapi-node",
+  "name": "llamaai",
   "version": "1.0.0",
   "description": "node package for llama api",
   "main": "index.js",

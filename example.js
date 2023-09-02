@@ -1,6 +1,6 @@
-import LlamaAPI from "llamaapi-node";
+import LlamaAI from "llamaai";
 const apiToken = 'YOUR_API_TOKEN';
-const llamaAPI = new LlamaAPI(apiToken);
+const llamaAPI = new LlamaAI(apiToken);
 const payload = {
     "messages": [
       {"role": "user", "content": "Extract the desired information from the following passage.:\n\nHi!"},
